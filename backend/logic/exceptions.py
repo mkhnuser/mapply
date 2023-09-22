@@ -1,0 +1,2 @@
+class AsyncPGError(Exception):
+    pass
