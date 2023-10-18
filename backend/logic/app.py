@@ -8,6 +8,7 @@ from aiohttp import web
 
 from .handlers import (
     handle_get_map_event,
+    handle_get_map_events,
     handle_post_map_event,
     handle_put_map_event,
     handle_delete_map_event
@@ -30,6 +31,11 @@ def create_app() -> web.Application:
             Routes.GET_MAP_EVENT.value.route,
             handle_get_map_event,
             name=Routes.GET_MAP_EVENT.value.name
+        ),
+        web.get(
+            Routes.GET_MAP_EVENTS.value.route,
+            handle_get_map_events,
+            name=Routes.GET_MAP_EVENTS.value.name
         ),
         web.post(
             Routes.POST_MAP_EVENT.value.route,

@@ -15,6 +15,11 @@ async def retrieve_map_event(
         map_event_id,
     )
 
+async def retrieve_map_events(pool: asyncpg.Pool) -> list[asyncpg.Record]:
+    return await pool.fetch(
+        "SELECT id, title, description, lat, lng FROM map_events;"
+    )
+
 
 async def create_map_event(
     pool: asyncpg.Pool,
