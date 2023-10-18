@@ -1,26 +1,21 @@
-import Header from "./ui/Header";
-import Content from "./ui/Content";
-import Footer from "./ui/Footer";
-import { LatLngLiteral } from "leaflet";
+import { QueryClient, QueryClientProvider } from "react-query";
 
-const positions: LatLngLiteral[] = [
-  { lat: 55, lng: 39 },
-  { lat: 58, lng: 38 },
-  { lat: 45, lng: 38 },
-  { lat: 61, lng: 44 },
-  { lat: 80, lng: 80 },
-];
+import Header from "./ui/Header";
+import Content from "./features/content/Content";
+import Footer from "./ui/Footer";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <div className="h-screen flex flex-col place-content-between">
         <Header />
-        <Content positions={positions} />
+        <Content />
       </div>
-      {/* Display the footer only if user scrolls down. */}
+      {/* Display the footer only if a user scrolls down. */}
       <Footer />
-    </>
+    </QueryClientProvider>
   );
 }
 
